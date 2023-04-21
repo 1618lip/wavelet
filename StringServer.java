@@ -2,13 +2,14 @@ import java.io.IOException;
 import java.net.URI;
 
 class Handler implements URLHandler {
+    String record = "";
+
     public String handleRequest(URI url) {
-        String record = "";
         System.out.println("Path: " + url.getPath());
         if (url.getPath().contains("/add-message")) {
             String[] parameters = url.getQuery().split("=");
             if (parameters[0].equals("s")) {
-                record += parameters[1]+"\n";
+                record += String.format("%s \n", parameters[1]);
                 return record;
             }
         }
